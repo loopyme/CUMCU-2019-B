@@ -508,8 +508,8 @@ class Drum:
 if __name__ == "__main__":
     # 初始化情景
     s = Situation(
-        forces_magnitude=np.array([80, 80, 80, 80, 80, 80, 80, 80]),
-        forces_time=np.array([-0, -0, 0, -0, -0, 0, 0, -0]),
+        forces_magnitude=np.array([80, 80, 80, 80, 80, 80, 80]),
+        forces_time=np.array([-0, -0, 0, -0, -0, 0, 0]),
         line_length=1.7,
     )
 
