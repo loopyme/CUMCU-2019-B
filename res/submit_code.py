@@ -394,8 +394,6 @@ class Drum:
             forcee[i] = (np.append(e, 1) @ s)[:-1] + np.array([0, 0, self.height])
         self.forcee = forcee
 
-
-
     @property
     def angular_acce(self):
         """
@@ -701,6 +699,66 @@ plt.ylabel("倾斜角度(度)")
 plt.plot(f_a["time"], f_a["angle_y"])
 
 plt.savefig("../res/pic/q3-t-a.png", dpi=720)
+
+# Q4 小球运动角度
+
+plt.figure(figsize=(10, 5))
+plt.grid()
+
+theta = 30 * 0.4 * pi / 180
+l = 2.5
+plt.axis("equal")
+plt.xlabel("x")
+plt.ylabel("z")
+
+plt.plot(
+    [cos(theta) * l, -cos(theta) * l], [-sin(theta) * l, sin(theta) * l], label="鼓面"
+)
+
+plt.plot([-l * 1.5, l * 1.5], [0, 0], color="black", label="x-o-y平面")
+plt.plot([0, 0], [0, 1], label="碰撞前小球方向")
+
+plt.plot([0, l * sin(theta)], [0, l * cos(theta)], "-.", label="碰撞平面法线")
+
+plt.plot([0, 1 * sin(2 * theta)], [0, 1 * cos(2 * theta)], label="碰撞后小球方向")
+plt.legend(loc="upper right")
+plt.annotate(s="θ", xy=(l / 2 * cos(theta / 2 + 0.03), -l / 2 * sin(theta / 2 + 0.03)))
+plt.annotate(s="θ", xy=(l / 2 * sin(theta / 2), 1 / 2 * cos(theta / 2)))
+plt.annotate(s="θ", xy=(l / 2 * sin(theta / 8 - 0.03), 1 / 2 * cos(theta / 8 - 0.03)))
+plt.annotate(s="θ=0.5°", xy=(2.1, 1.1))
+plt.savefig("../res/pic/q4-1.png", dpi=720)
+
+plt.figure(figsize=(10, 5))
+plt.grid()
+
+theta = -30 * 0.4 * pi / 180
+l = 2.5
+plt.axis("equal")
+plt.xlabel("x")
+plt.ylabel("z")
+
+plt.plot(
+    [cos(theta) * l, -cos(theta) * l], [-sin(theta) * l, sin(theta) * l], label="鼓面"
+)
+
+plt.plot([-l * 1.5, l * 1.5], [0, 0], color="black", label="x-o-y平面")
+
+x, y = (l / 3 * cos(theta), -l / 3 * sin(theta))
+plt.plot([0 + x, 0 + x], [0 + y, 1 + y], label="碰撞后小球方向")
+plt.plot([0 + x, l * sin(theta) + x], [0 + y, l * cos(theta) + y], "-.", label="碰撞平面法线")
+plt.plot(
+    [0 + x, 1 * sin(2 * theta) + x], [0 + y, 1 * cos(2 * theta) + y], label="碰撞前小球方向"
+)
+plt.legend(loc="upper right")
+
+plt.annotate(s="θ", xy=(l / 2 * cos(theta / 2 + 0.03), -l / 2 * sin(theta / 2 + 0.03)))
+plt.annotate(
+    s="θ", xy=(l / 2 * sin(theta / 2) + x + 0.015, 1 / 2 * cos(theta / 2) + y + 0.015)
+)
+
+plt.annotate(s="θ", xy=(l / 2 * sin(theta / 4) - 0.18 + x, 1 / 2 * cos(theta / 4) + y))
+plt.annotate(s="θ=0.4187°", xy=(2.1, 1.1))
+plt.savefig("../res/pic/q4-2.png", dpi=720)
 
 # Q2 受力分析图
 
