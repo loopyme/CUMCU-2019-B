@@ -183,7 +183,7 @@ class Drum:
     ]
 
     def __init__(
-        self, forcer, forcee, forces_magnitude, forces_time, frequency, height
+            self, forcer, forcee, forces_magnitude, forces_time, frequency, height
     ):
         """
         初始化鼓的相关物理量
@@ -203,7 +203,7 @@ class Drum:
 
         # 零阶量
         self.forcer = forcer
-        self.rota_intertia = 0.0507
+        self.rota_intertia = 0.08
         self.weight = 3.6
         self.forces_time = forces_time
 
@@ -402,9 +402,9 @@ class Drum:
         x_moment_sum = 0
         for f in self.force:
             f_vector = (
-                f.force_now
-                * (f.forcer - f.forcee)
-                / sqrt(np.sum((f.forcer - f.forcee) ** 2))
+                    f.force_now
+                    * (f.forcer - f.forcee)
+                    / sqrt(np.sum((f.forcer - f.forcee) ** 2))
             )
             f_arm = f.forcee - np.array([0, 0, self.height])
             f_moment = np.cross(f_vector, f_arm)[0]
@@ -414,9 +414,9 @@ class Drum:
         y_moment_sum = 0
         for f in self.force:
             f_vector = (
-                f.force_now
-                * (f.forcer - f.forcee)
-                / sqrt(np.sum((f.forcer - f.forcee) ** 2))
+                    f.force_now
+                    * (f.forcer - f.forcee)
+                    / sqrt(np.sum((f.forcer - f.forcee) ** 2))
             )
             f_arm = f.forcee - np.array([0, 0, self.height])
             f_moment = np.cross(f_vector, f_arm)[1]
@@ -436,13 +436,13 @@ class Drum:
         h_moment_sum = 0
         for f in self.force:
             f_vector = (
-                f.force_now
-                * (f.forcer - f.forcee)
-                / sqrt(np.sum((f.forcer - f.forcee) ** 2))
+                    f.force_now
+                    * (f.forcer - f.forcee)
+                    / sqrt(np.sum((f.forcer - f.forcee) ** 2))
             )
             f_moment = f_vector[2]
             h_moment_sum += f_moment
-        return h_moment_sum / self.weight
+        return h_moment_sum / self.weight - 9.8
 
     def save_report(self):
         """
@@ -508,8 +508,8 @@ class Drum:
 if __name__ == "__main__":
     # 初始化情景
     s = Situation(
-        forces_magnitude=np.array([80, 80, 80, 90, 80, 80, 80, 80]),
-        forces_time=np.array([0, 0, 0, 0, -0.1, 0, 0, 0]),
+        forces_magnitude=np.array([80, 80, 80, 80, 80, 80, 80, 80]),
+        forces_time=np.array([-0, -0, 0, -0, -0, 0, 0, -0]),
         line_length=1.7,
     )
 
