@@ -2,8 +2,8 @@
 同心鼓．．．
 
 ## 项目包含以下文件：
- - **venv** 运行本项目所需的Python虚拟环境(考虑到项目体积，某些版本中可能缺失)
- - **simulatou** 仿真器
+ - **venv** 运行本项目所需的Python虚拟环境
+ - **simulator** 仿真器
     - `drum_simulator.py` : **主要的仿真框架和工具**
     - `drum_simulator_for_server.py` : 在服务器上运行的分支版本，简单优化了OI和输出．并且使用的不是项目的标定坐标方向
     - `drum_simulator_for_analyse.py` : 专门用于收集数据的分支版本，简单优化了数据采集．但不包含数据处理
